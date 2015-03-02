@@ -36,6 +36,15 @@ rule "Raise alarm when one or more fire"
 
 end
 
+rule "Checking conflicts"
+	salience -50
+    when
+        not Fire()
+	then		
+		System.out.println( "Resolve conflicts and execute at last" );
+
+end
+
 rule "Turn off alarm when fire is extinguished"
 
     when
@@ -48,7 +57,7 @@ rule "Turn off alarm when fire is extinguished"
 end
 
 rule "Send OK when everything is OK"
-
+	
     when
         not Alarm()
 		not Sprinkler( onSprinkler == true )
@@ -56,3 +65,4 @@ rule "Send OK when everything is OK"
 		System.out.println( "Everything is ok" );
 
 end
+
