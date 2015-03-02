@@ -1,0 +1,58 @@
+//created on: Mar 2, 2015
+package com.tridib.firealarm
+
+//import com.tridib.firealarm.Room;
+
+rule "Turn on the sprinkler when there is a fire"
+
+    when
+        Fire($room : room)
+        $sprinkler : Sprinkler( room == $room, onSprinkler == false )//conditions
+    then
+		modify( $sprinkler ) { setOnSprinkler( true ) };
+		System.out.println( "Turn on the sprinkler for " + $room.toString() );
+
+end
+
+rule "Turn off the sprinkler when there is no fire"
+
+    when
+		$room : Room( )
+		$sprinkler : Sprinkler( room == $room, onSprinkler == true )
+		not Fire( room == $room )
+	then
+		modify( $sprinkler ) { setOnSprinkler( false ) };
+		System.out.println( "Turn off the sprinkler for " + $room.toString() );
+
+end
+
+rule "Raise alarm when one or more fire"
+
+    when
+		exists Fire()
+	then
+		insert( new Alarm() );
+		System.out.println( "Raise the alarm" );
+
+end
+
+rule "Turn off alarm when fire is extinguished"
+
+    when
+        not Fire()
+		$alarm : Alarm()
+	then
+		delete( $alarm );
+		System.out.println( "Cancel the alarm" );
+
+end
+
+rule "Send OK when everything is OK"
+
+    when
+        not Alarm()
+		not Sprinkler( onSprinkler == true )
+	then
+		System.out.println( "Everything is ok" );
+
+end
