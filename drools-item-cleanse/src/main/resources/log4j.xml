@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="pl.grzejszczak.marcin">
+	<logger name="com.tci.product">
 		<level value="DEBUG" />
 	</logger>
 
