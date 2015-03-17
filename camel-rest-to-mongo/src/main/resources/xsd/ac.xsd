@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ContentCafe2.btol.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://my.btol.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="ContentCafe">
     <xs:complexType>
       <xs:sequence>
@@ -20,28 +20,17 @@
                       </xs:complexType>
                     </xs:element>
                     <xs:element type="xs:string" name="Content"/>
-                    <xs:element name="AvailableContent">
+                    <xs:element name="ac">
                       <xs:complexType>
                         <xs:sequence>
-                          <xs:element type="xs:string" name="Annotation"/>
-                          <xs:element type="xs:string" name="Biography"/>
-                          <xs:element type="xs:string" name="Excerpt"/>
-                          <xs:element type="xs:string" name="Flap"/>
-                          <xs:element type="xs:string" name="Inventory"/>
-                          <xs:element type="xs:string" name="Demand"/>
-                          <xs:element type="xs:string" name="DemandHistory"/>
-                          <xs:element type="xs:string" name="Jacket"/>
-                          <xs:element type="xs:string" name="Product"/>
-                          <xs:element type="xs:string" name="Review"/>
-                          <xs:element type="xs:string" name="TOC"/>
-                          <xs:element type="xs:string" name="MuzeVideoRelease"/>
-                          <xs:element type="xs:string" name="MuzeSimilarCinema"/>
-                          <xs:element type="xs:string" name="MuzePopularMusic"/>
-                          <xs:element type="xs:string" name="MuzeClassicalMusic"/>
-                          <xs:element type="xs:string" name="MuzeEssentialArtists"/>
-                          <xs:element type="xs:string" name="MuzeGames"/>
-                          <xs:element type="xs:string" name="MuzeJacket"/>
-                          <xs:element type="xs:string" name="CPSIA_Warning"/>
+                          <xs:element type="xs:string" name="a1"/>
+                          <xs:element type="xs:string" name="b1"/>
+                          <xs:element type="xs:string" name="e1"/>
+                          <xs:element type="xs:string" name="f1"/>
+                          <xs:element type="xs:string" name="i1"/>
+                          <xs:element type="xs:string" name="d1"/>
+                          <xs:element type="xs:string" name="dh1"/>
+                          <xs:element type="xs:string" name="j1"/>                          
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
