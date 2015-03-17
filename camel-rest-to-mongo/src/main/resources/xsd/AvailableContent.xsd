@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ContentCafe2.btol.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ContentCafe">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="RequestItems">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RequestItem">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Key">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:long">
+                            <xs:attribute type="xs:string" name="Type"/>
+                            <xs:attribute type="xs:long" name="Original"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="Content"/>
+                    <xs:element name="AvailableContent">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="Annotation"/>
+                          <xs:element type="xs:string" name="Biography"/>
+                          <xs:element type="xs:string" name="Excerpt"/>
+                          <xs:element type="xs:string" name="Flap"/>
+                          <xs:element type="xs:string" name="Inventory"/>
+                          <xs:element type="xs:string" name="Demand"/>
+                          <xs:element type="xs:string" name="DemandHistory"/>
+                          <xs:element type="xs:string" name="Jacket"/>
+                          <xs:element type="xs:string" name="Product"/>
+                          <xs:element type="xs:string" name="Review"/>
+                          <xs:element type="xs:string" name="TOC"/>
+                          <xs:element type="xs:string" name="MuzeVideoRelease"/>
+                          <xs:element type="xs:string" name="MuzeSimilarCinema"/>
+                          <xs:element type="xs:string" name="MuzePopularMusic"/>
+                          <xs:element type="xs:string" name="MuzeClassicalMusic"/>
+                          <xs:element type="xs:string" name="MuzeEssentialArtists"/>
+                          <xs:element type="xs:string" name="MuzeGames"/>
+                          <xs:element type="xs:string" name="MuzeJacket"/>
+                          <xs:element type="xs:string" name="CPSIA_Warning"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="UserID"/>
+            <xs:attribute type="xs:string" name="Password"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute type="xs:dateTime" name="DateTime"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

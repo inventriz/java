@@ -33,6 +33,23 @@
 	<build>
 		<plugins>
 			<plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <packageName>com.tci.item.bnt</packageName>
+                    <schemaDirectory>${project.basedir}/src/main/resources/xsd</schemaDirectory>
+                </configuration>
+            </plugin>
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<configuration>
@@ -78,7 +95,10 @@
 		    <!-- use the same version as your Camel core version -->
 		</dependency>
 		
-		
+		<dependency>
+		  <groupId>org.apache.camel</groupId>
+		  <artifactId>camel-jaxb</artifactId>		  
+		</dependency>
 		
 		<dependency>
 		    <groupId>org.apache.camel</groupId>
@@ -131,6 +151,17 @@
 			<groupId>org.apache.xbean</groupId>
 			<artifactId>xbean-spring</artifactId>
 		</dependency>
+		
+		<dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.2.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-xjc</artifactId>
+            <version>2.2.6</version>
+        </dependency>
 
 		<!-- logging -->
 		<dependency>
