@@ -45,7 +45,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <packageName>com.tci.item.bnt</packageName>
+                    <packageName>com.tci.item.provider</packageName>
                     <schemaDirectory>${project.basedir}/src/main/resources/xsd</schemaDirectory>
                 </configuration>
             </plugin>

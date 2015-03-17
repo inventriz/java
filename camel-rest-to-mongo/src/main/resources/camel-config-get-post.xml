@@ -29,11 +29,11 @@
 		properties-ref="dbProperties" />
 
 	<!-- Here we define Camel, notice the namespace it uses -->
-	<camelContext xmlns="http://camel.apache.org/schema/spring" xmlns:contentcafe="http://ContentCafe2.btol.com/">
+	<camelContext xmlns="http://camel.apache.org/schema/spring">
 		
 		<dataFormats>
 		    <!-- jaxb id="myJaxb" prettyPrint="true" contextPath="com.tci.item.bnt.ObjectFactory"/ -->
-		    <jaxb id="myJaxb" prettyPrint="true" contextPath="com.tci.item.bnt"/>
+		    <jaxb id="myJaxb" prettyPrint="true" contextPath="com.tci.item.provider"/>
 		</dataFormats>
 		
 		
@@ -42,7 +42,7 @@
 			<from uri="file:/input?fileName=isbnlist.csv" />
 			<split>
 			<tokenize token=","></tokenize>
-				<log message="Getting the message for ISBN = ${body}" />
+				<log message="${body}" />
 				<setHeader headerName="CamelHttpMethod">
 					<constant>POST</constant>
 				</setHeader>
@@ -50,18 +50,13 @@
 					<constant>application/x-www-form-urlencoded</constant>
 				</setHeader>
 				<setBody>
-					<simple>userID=TG27321&amp;password=CC93504&amp;key=${body}&amp;content=AvailableContent</simple>
+					<simple>userID=asdsadsa&amp;password=pwderty1234&amp;key=${body}&amp;content=ac</simple>
 				</setBody>
-				<to	uri="http4://contentcafe2.btol.com/contentcafe/contentcafe.asmx/Single" />
+				<to	uri="http4://example.btol.com/cc/cc.asmx/Single" />
 				<convertBodyTo type="org.w3c.dom.Document" /> 
 				<unmarshal ref="myJaxb"/>
 				<to uri="bean:convertToJson?method=checkProductAvailability(${body})"/>
-				<!--setBody>					
-					<xpath resultType="java.lang.String">/ContentCafe/RequestItems/RequestItem/Key</xpath>
-				</setBody>
-				< convertBodyTo type="String" /> 
-				<to uri="bean:convertToJson?method=removeNameSpace(${body})"/>
-				<log message="ProductAvailable = ${body}" / -->
+				
 			</split>
 		</route>
 	</camelContext>

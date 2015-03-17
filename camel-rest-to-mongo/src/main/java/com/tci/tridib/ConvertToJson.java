@@ -1,6 +1,6 @@
 package com.sapient.tridib;
 
-import com.tci.item.bnt.ContentCafe;
+import com.tci.item.provider.CC;
 
 public class ConvertToJson {
 	
@@ -13,21 +13,10 @@ public class ConvertToJson {
 		return str;
 	}
 	
-	public String removeNameSpace(String str){
 		
-		//str.replace("<ContentCafe xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://ContentCafe2.btol.com\"", "<ContentCafe ");
-		if(str.contains("<Product>true</Product>")){
-			return "true";
-		} else {
-			return "false";
-		}
-		//System.out.println("ConvertToJson.removeNameSpace() === "+str);		
+	public void checkProductAvailability(CC cc){
 		
-	}
-	
-	public void checkProductAvailability(ContentCafe cc){
-		
-		System.out.println("ProductAvailable == "+cc.getRequestItems().getRequestItem().getAvailableContent().getProduct());
+		System.out.println("ProductAvailable == "+cc..getProduct());
 		
 	}
 
