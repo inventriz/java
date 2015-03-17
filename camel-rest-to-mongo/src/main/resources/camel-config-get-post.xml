@@ -13,10 +13,8 @@
 <!-- START SNIPPET: e1 -->
 <!-- this is a spring XML file where we have Camel embedded -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:camel="http://camel.apache.org/schema/spring"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/spring"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
@@ -26,30 +24,51 @@
 	<bean id="dbProperties"
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean"
 		p:location="classpath:db.properties" />
-		
-	<context:property-placeholder properties-ref="dbProperties" />
+
+	<context:property-placeholder
+		properties-ref="dbProperties" />
 
 	<!-- Here we define Camel, notice the namespace it uses -->
-	<camelContext xmlns="http://camel.apache.org/schema/spring">
-    <route>
-        <from uri="timer:foo?period=15s"/>
-        <setHeader headerName="CamelHttpMethod">
-	        <constant>POST</constant>
-	    </setHeader>
-	    <setHeader headerName="Content-Type">
-	        <constant>application/x-www-form-urlencoded</constant>
-	    </setHeader>
-	    <setBody>
-	    	<camel:simple>userID=TG27321&amp;password=CC93504&amp;key=9781909217355&amp;content=AvailableContent</camel:simple> 
-	    </setBody>
-        <to uri="http4://contentcafe2.btol.com/contentcafe/contentcafe.asmx/Single"/>
-        <!-- to uri="http4://contentcafe2.btol.com/contentcafe/contentcafe.asmx/Single?userID=TG27321&amp;password=CC93504&amp;key=9781909217355&amp;content=AvailableContent"/  -->
-        <convertBodyTo type="String"/>
-        <log message="Response from BNT ${body} received at ${date:now:yyyy-MM-dd HH:mm:ss}"/>
-    </route>
-</camelContext>
+	<camelContext xmlns="http://camel.apache.org/schema/spring" xmlns:contentcafe="http://ContentCafe2.btol.com/">
+		
+		<dataFormats>
+		    <!-- jaxb id="myJaxb" prettyPrint="true" contextPath="com.tci.item.bnt.ObjectFactory"/ -->
+		    <jaxb id="myJaxb" prettyPrint="true" contextPath="com.tci.item.bnt"/>
+		</dataFormats>
+		
+		
+		<route>
+			<!-- from uri="file:/input?fileName=cc2.xml" / -->
+			<from uri="file:/input?fileName=isbnlist.csv" />
+			<split>
+			<tokenize token=","></tokenize>
+				<log message="Getting the message for ISBN = ${body}" />
+				<setHeader headerName="CamelHttpMethod">
+					<constant>POST</constant>
+				</setHeader>
+				<setHeader headerName="Content-Type">
+					<constant>application/x-www-form-urlencoded</constant>
+				</setHeader>
+				<setBody>
+					<simple>userID=TG27321&amp;password=CC93504&amp;key=${body}&amp;content=AvailableContent</simple>
+				</setBody>
+				<to	uri="http4://contentcafe2.btol.com/contentcafe/contentcafe.asmx/Single" />
+				<convertBodyTo type="org.w3c.dom.Document" /> 
+				<unmarshal ref="myJaxb"/>
+				<to uri="bean:convertToJson?method=checkProductAvailability(${body})"/>
+				<!--setBody>					
+					<xpath resultType="java.lang.String">/ContentCafe/RequestItems/RequestItem/Key</xpath>
+				</setBody>
+				< convertBodyTo type="String" /> 
+				<to uri="bean:convertToJson?method=removeNameSpace(${body})"/>
+				<log message="ProductAvailable = ${body}" / -->
+			</split>
+		</route>
+	</camelContext>
 	
-	
+	<bean id="convertToJson" class="com.sapient.tridib.ConvertToJson"/>
+
+
 
 </beans>
 <!-- END SNIPPET: e1 -->
