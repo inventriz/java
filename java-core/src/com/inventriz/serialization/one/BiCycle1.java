@@ -8,7 +8,7 @@ public class BiCycle1 implements Serializable{
 	private String color;
 	private String length;
 	private Date manufactureDate;
-	private int noOfGear;
+	private transient int noOfGear;
 	private boolean hasSitCover;
 	
 	//public BiCycle(){}
