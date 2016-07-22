@@ -7,9 +7,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Date;
 
-public class TestSerialization {
+public class TestSerialization1 {
 	
-	String path="D:\\path\\to\\write\\";
+	String path="D:\\Tridib\\";
 	
 	void serialize(String file, Object obj) throws IOException{
 		FileOutputStream fos = new FileOutputStream(path.concat(file));
@@ -27,12 +27,12 @@ public class TestSerialization {
 	}
 	
 	public static void main(String args[]){
-		TestSerialization ts = new TestSerialization();
-		BiCycle biCycle = new BiCycle("blue","20", new Date(), 4, true);
+		TestSerialization1 ts = new TestSerialization1();
+		BiCycle1 biCycle = new BiCycle1("blue","20", new Date(), 4, true);
 		try {
 			ts.serialize("bicycle.txt", biCycle);
 			
-			BiCycle deBc = (BiCycle)ts.deserialize("bicycle.txt");
+			BiCycle1 deBc = (BiCycle1)ts.deserialize("bicycle.txt");
 			System.out.println(deBc.toString());
 		} catch (IOException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block

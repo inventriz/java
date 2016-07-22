@@ -3,7 +3,7 @@ package com.inventriz.serialization.one;
 import java.io.Serializable;
 import java.util.Date;
 
-public class BiCycle implements Serializable{
+public class BiCycle1 implements Serializable{
 	
 	private String color;
 	private String length;
@@ -13,7 +13,7 @@ public class BiCycle implements Serializable{
 	
 	//public BiCycle(){}
 	
-	public BiCycle(String color, String length, Date manufactureDate,
+	public BiCycle1(String color, String length, Date manufactureDate,
 			int noOfGear, boolean hasSitCover) {
 		super();
 		this.color = color;
@@ -78,7 +78,7 @@ public class BiCycle implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BiCycle other = (BiCycle) obj;
+		BiCycle1 other = (BiCycle1) obj;
 		if (color == null) {
 			if (other.color != null)
 				return false;
