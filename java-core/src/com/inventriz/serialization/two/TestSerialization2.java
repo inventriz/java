@@ -5,11 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.Date;
 
-public class TestSerialization {
+public class TestSerialization2 {
 	
-	String path="D:\\Tridib";
+	String path="D:\\path\\to\\write";
 	
 	void serialize(String file, Object obj) throws IOException{
 		FileOutputStream fos = new FileOutputStream(path.concat(file));
@@ -27,14 +26,14 @@ public class TestSerialization {
 	}
 	
 	public static void main(String args[]){
-		TestSerialization ts = new TestSerialization();
-		HybridCycle biCycle = new HybridCycle();
+		TestSerialization2 ts = new TestSerialization2();
+		HybridCycle biCycle = new HybridCycle(2);
 		try {
 			ts.serialize("high-bicycle.txt", biCycle);
 			
-			//BiCycle deBc = (BiCycle)ts.deserialize("bicycle.txt");
-			//System.out.println(deBc.toString());
-		} catch (IOException e) {
+			HybridCycle deBc = (HybridCycle)ts.deserialize("high-bicycle.txt");
+			System.out.println(deBc.toString());
+		} catch (IOException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block  | ClassNotFoundException
 			e.printStackTrace();
 		}
