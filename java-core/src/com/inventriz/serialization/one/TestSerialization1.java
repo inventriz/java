@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class TestSerialization1 {
 	
-	String path="D:\\Tridib\\";
+	String path="D:\\path\\to\\write\\";
 	
 	void serialize(String file, Object obj) throws IOException{
 		FileOutputStream fos = new FileOutputStream(path.concat(file));
