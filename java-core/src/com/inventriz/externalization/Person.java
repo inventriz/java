@@ -40,8 +40,8 @@ public class Person implements Externalizable {
 
 	@Override
 	public void writeExternal(ObjectOutput out) throws IOException {
-		//out.writeObject(id);
-		out.writeInt(id);
+		out.writeObject(id);
+		//out.writeInt(id);
 		out.writeInt(age);
 		out.writeObject(gender); // no encoding
 		out.writeObject(contact);
@@ -54,7 +54,7 @@ public class Person implements Externalizable {
 	@Override
 	public void readExternal(ObjectInput in) throws IOException,
 			ClassNotFoundException {
-		id = in.readInt();
+		id = (Integer)in.readObject();
 		age = in.readInt();
 		gender = (String)in.readObject();
 		contact = (String)in.readObject();

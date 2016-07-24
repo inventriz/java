@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import com.sun.xml.internal.fastinfoset.util.StringArray;
+
 public class TestExternalization {
 	
 	String path = "D:\\Tridib\\";
@@ -30,14 +32,14 @@ public class TestExternalization {
 	
 	public static void main(String[] args){		
 		TestExternalization te = new TestExternalization();
-		/*try {
+		try {
 			String[] arr = {"Puri", "Sabji"};
-			Person p = new Person(34, 123, "Male", "9886466447", true, arr);
+			Person p = new Person(34, 123, GENDER.MALE, "9886466447", true, arr);
 			te.serialize(p);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 		
 		try {
 			Person p = (Person) te.deserialize(Person.class.getName());
