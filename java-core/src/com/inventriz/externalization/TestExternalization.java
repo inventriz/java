@@ -10,7 +10,7 @@ import com.sun.xml.internal.fastinfoset.util.StringArray;
 
 public class TestExternalization {
 	
-	String path = "D:\\Tridib\\";
+	String path = "D:\\path\\to\\write\\";
 	
 	void serialize(Object obj) throws IOException{
 		FileOutputStream fos = new FileOutputStream(path.concat(obj.getClass().getName()).concat(".tcf"));
