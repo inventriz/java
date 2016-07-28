@@ -11,7 +11,7 @@ public class BiCycle1 implements Serializable{
 	private transient int noOfGear;
 	private boolean hasSitCover;
 	
-	//public BiCycle(){}
+	//public BiCycle(){} 
 	
 	public BiCycle1(String color, String length, Date manufactureDate,
 			int noOfGear, boolean hasSitCover) {
