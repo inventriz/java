@@ -34,7 +34,7 @@ public class TestExternalization {
 		TestExternalization te = new TestExternalization();
 		try {
 			String[] arr = {"Puri", "Sabji"};
-			Person p = new Person(34, 123, GENDER.MALE, "9886466447", true, arr);
+			Person p = new Person(34, 123, "male", "9886466447", true, arr);
 			te.serialize(p);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
