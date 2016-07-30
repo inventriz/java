@@ -58,7 +58,6 @@ public class TestInventJson {
 			} catch (SecurityException | IllegalArgumentException
 					| IllegalAccessException | NoSuchMethodException
 					| InvocationTargetException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
