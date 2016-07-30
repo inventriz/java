@@ -7,7 +7,7 @@ public class Car {
 	private String transmissionType;
 	private int year;
 	private int id;
-	private boolean isHacthBack;
+	private boolean isHacthBack;//	private boolean hasRoofTop;
 	private long kmDriven;
 	private double length;
 	private double height;
