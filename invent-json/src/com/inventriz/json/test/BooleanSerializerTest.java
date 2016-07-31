@@ -1,12 +1,12 @@
 package com.inventriz.json.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import com.inventriz.json.serialize.BooleanSerializer;
 import com.inventriz.json.serialize.IInventJsonSerializer;
-import com.inventriz.json.serialize.StringSerializer;
 
 public class BooleanSerializerTest {
 
