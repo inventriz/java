@@ -4,13 +4,18 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import com.inventriz.json.InventJson;
+
 public class TestInventJson {
 
 	public static void main(String arg[]) {
-		Car c = new Car("Hundai", "i10", "manual", 2012);
-		TestInventJson tj = new TestInventJson();
+		SmallCar c = new SmallCar("Hundai", "i10", "manual", 2012);
+		//TestInventJson tj = new TestInventJson();
+		
+		InventJson ij = InventJson.getInstance();
+		ij.convertToJson(c);
 
-		System.out.println(tj.makeJson(c));
+		//System.out.println(tj.makeJson(c));
 	}
 
 	String makeJson(Object obj) {
