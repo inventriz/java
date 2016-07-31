@@ -20,7 +20,7 @@ public class TestInventJson {
 			sb = new StringBuilder("{");
 			Field[] fields = obj.getClass().getDeclaredFields();
 			for (Field f : fields) {
-				// System.out.println(f.getName());
+				System.out.println(f.getName());
 				sb.append("{");
 				sb.append("\"" + f.getName() + "\"");
 				sb.append(":");
@@ -28,7 +28,7 @@ public class TestInventJson {
 				String fieldName = f.getName();
 				char c = fieldName.charAt(0);
 				fieldName = fieldName.replaceFirst(String.valueOf(c), String.valueOf(c).toUpperCase());
-				System.out.println("Method = get"+fieldName);
+				System.out.println(f.getType());
 				
 				sb.append(getValue(obj, "get"+fieldName));
 				sb.append("}");

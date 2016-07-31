@@ -2,6 +2,7 @@ package com.inventriz.json.serialize;
 
 import java.lang.reflect.Field;
 
+import com.inventriz.json.config.ParameterType;
 import com.inventriz.json.util.InventJsonUtil;
 
 public class ClassScanner implements IInventClassScanner{
@@ -21,11 +22,11 @@ public class ClassScanner implements IInventClassScanner{
 		return fields;
 	}
 	
-	String getMethodName(String fieldName, String type){		
+	public String getMethodName(String fieldName, String type){		
 		if(fieldName!=null && !"".equals(fieldName.trim()) 
 				&& type!=null && !"".equals(type.trim())){
-			if("boolean".equalsIgnoreCase(type)){
-				if(fieldName.startsWith("is")){
+			if(ParameterType.Boolean.type().equalsIgnoreCase(type)){
+				if(fieldName.startsWith(_is)){
 					return fieldName;
 				} else {
 					fieldName = inventJsonUtil.changeFirstChar(fieldName);
