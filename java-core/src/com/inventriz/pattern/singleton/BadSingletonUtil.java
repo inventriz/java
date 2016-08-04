@@ -4,10 +4,12 @@ public class BadSingletonUtil {
 	
 	private BadSingletonUtil(){} // private constructor to prevent object initialization from outside
 	
-	private static BadSingletonUtil singleUtil ;//= new BadSingletonUtil();
+	private static BadSingletonUtil singleUtil = null;// to implement lazy initialization
 	
 	public static BadSingletonUtil getInstance(){
-		BadSingletonUtil singleUtil = new BadSingletonUtil();
+		if(singleUtil == null){
+			singleUtil = new BadSingletonUtil();
+		}		
 		return singleUtil;
 	}
 	
