@@ -4,7 +4,7 @@ public class BooleanSerializer implements IInventJsonSerializer<Boolean> {
 
 	@Override
 	public String serialize(String k, Boolean v) {
-		StringBuilder sb = new StringBuilder("{");
+		StringBuilder sb = new StringBuilder();
 		if(k!=null){
 			sb.append("\""+k+"\"");
 			sb.append(":");
@@ -13,7 +13,7 @@ public class BooleanSerializer implements IInventJsonSerializer<Boolean> {
 			} else {
 				sb.append("false");
 			}
-			sb.append("}");
+			
 			return sb.toString();
 		}
 		return null;

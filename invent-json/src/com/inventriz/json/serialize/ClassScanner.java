@@ -19,7 +19,7 @@ public class ClassScanner implements IInventClassScanner {
 	public Field[] scanFields(Object o) {
 		Field[] fields = null;
 		if (o != null) {
-			fields = o.getClass().getFields();
+			fields = o.getClass().getDeclaredFields();
 		}
 		return fields;
 	}

@@ -19,6 +19,7 @@ public class InventJson {
 	}
 	
 	public String convertToJson(Object o){
+		StringBuilder sb = null;
 		if (o!=null) {
 			String fieldName = null;
 			String fieldType = null;
@@ -30,9 +31,24 @@ public class InventJson {
 				fieldName = fields[i].getName();
 				fieldType = fields[i].getType().getName();
 				fieldValue = classScanner.invokeMethod(o, classScanner.getMethodName(fieldName, fieldType));
-				fieldSer = serFactory.getSerializedJson(fieldName, fieldValue);
-				System.out.println(fieldSer);
+				if (fieldValue != null && fieldName != null) {
+					fieldSer = serFactory.getSerializedJson(fieldName,
+							fieldValue);
+					if(fieldSer!=null){
+						if(sb == null){
+							sb = new StringBuilder("{");
+						}
+						sb.append(fieldSer);
+						if(i<fields.length-1){
+							sb.append(",");
+						}
+					}
+				}
 			}
+			if(sb!=null){
+				sb.append("}");
+			}
+			System.out.println(sb.toString());
 		}
 		return null;
 	}
