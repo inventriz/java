@@ -11,9 +11,14 @@ public class TestInventJson {
 	public static void main(String arg[]) {
 		SmallCar c = new SmallCar("Hundai", "i10", "manual", 2012);
 		//TestInventJson tj = new TestInventJson();
+		c.setColor("Black Gray");
+		c.setHacthBack(true);
+		c.setId(12345);
+		c.setNoOfPersonTravel(5);
+		c.setKeyFeatures(new String[]{"itvt2 Engine", "roof glass", "stepnie"});
 		
 		InventJson ij = InventJson.getInstance();
-		ij.convertToJson(c);
+		System.out.println(ij.convertToJson(c));
 
 		//System.out.println(tj.makeJson(c));
 	}

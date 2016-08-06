@@ -20,6 +20,7 @@ public class InventJson {
 	
 	public String convertToJson(Object o){
 		StringBuilder sb = null;
+		String res = null;
 		if (o!=null) {
 			String fieldName = null;
 			String fieldType = null;
@@ -47,10 +48,11 @@ public class InventJson {
 			}
 			if(sb!=null){
 				sb.append("}");
+				res = sb.toString();
 			}
-			System.out.println(sb.toString());
+			//System.out.println(res);
 		}
-		return null;
+		return res;
 	}
 
 }

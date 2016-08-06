@@ -10,6 +10,7 @@ public class SmallCar {
 	private boolean isHacthBack;//	private boolean hasRoofTop;	
 	private String color;
 	private int noOfPersonTravel;
+	private String[] keyFeatures;
 	
 		
 	public SmallCar() {
@@ -83,6 +84,12 @@ public class SmallCar {
 	}
 	public void setNoOfPersonTravel(int noOfPersonTravel) {
 		this.noOfPersonTravel = noOfPersonTravel;
+	}
+	public String[] getKeyFeatures() {
+		return keyFeatures;
+	}
+	public void setKeyFeatures(String[] keyFeatures) {
+		this.keyFeatures = keyFeatures;
 	}
 	
 	

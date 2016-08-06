@@ -20,6 +20,12 @@ public class JsonSerializerFactory {
 				}
 				res = stringSer.serialize(k, (String) o);
 				break;
+			case "java.lang.String[]":
+				if (stringSer == null) {
+					stringSer = new StringSerializer();
+				}
+				res = stringSer.serialize(k, (String) o);
+				break;
 			case "int":
 				if (intSer == null) {
 					intSer = new NumericSerializer();
