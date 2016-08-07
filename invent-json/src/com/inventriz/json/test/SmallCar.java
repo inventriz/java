@@ -7,10 +7,12 @@ public class SmallCar {
 	private String transmissionType;
 	private int year;
 	private int id;
+	private String[] keyFeatures;
+	private int[] yearsWin;
 	private boolean isHacthBack;//	private boolean hasRoofTop;	
 	private String color;
 	private int noOfPersonTravel;
-	private String[] keyFeatures;
+	
 	
 		
 	public SmallCar() {
@@ -90,6 +92,12 @@ public class SmallCar {
 	}
 	public void setKeyFeatures(String[] keyFeatures) {
 		this.keyFeatures = keyFeatures;
+	}
+	public int[] getYearsWin() {
+		return yearsWin;
+	}
+	public void setYearsWin(int[] yearsWin) {
+		this.yearsWin = yearsWin;
 	}
 	
 	

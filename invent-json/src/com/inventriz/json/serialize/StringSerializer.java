@@ -1,22 +1,22 @@
 package com.inventriz.json.serialize;
 
-public class StringSerializer implements IInventJsonSerializer<String> {
+public class StringSerializer extends BaseSerializer<String> {
 
 	@Override
 	public String serialize(String k, String v) {
-		StringBuilder sb = new StringBuilder();
-		if(k!=null){
-			sb.append("\""+k+"\"");
-			sb.append(":");
-			if(v!=null){
-				sb.append("\""+v+"\"");
-			} else {
-				sb.append("null");
-			}
-			
-			return sb.toString();
-		}
+		if(baseJsonSerialize(k)!=null){
+			return baseJsonSerialize(k).concat(serialize(v));
+		}		
 		return null;
+	}
+
+	@Override
+	public String serialize(String v) {
+		if(v!=null){
+			return "\""+v+"\"";
+		} else {
+			return "null";
+		}
 	}
 
 }

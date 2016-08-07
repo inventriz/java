@@ -16,6 +16,7 @@ public class TestInventJson {
 		c.setId(12345);
 		c.setNoOfPersonTravel(5);
 		c.setKeyFeatures(new String[]{"itvt2 Engine", "roof glass", "stepnie"});
+		c.setYearsWin(new int[]{2012,2014,2015});
 		
 		InventJson ij = InventJson.getInstance();
 		System.out.println(ij.convertToJson(c));

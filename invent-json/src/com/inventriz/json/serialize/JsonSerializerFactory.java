@@ -2,9 +2,12 @@ package com.inventriz.json.serialize;
 
 public class JsonSerializerFactory {
 	
-	IInventJsonSerializer<String> stringSer = null;
+	IInventJsonSerializer<String> stringSer = null;	
 	IInventJsonSerializer<Integer> intSer = null;
 	IInventJsonSerializer<Boolean> boolSer = null;
+	IntegerArraySerializer intArrSer = null;
+	ArraySerializer stringArrSer = null;
+	
 
 	public String getSerializedJson(String k, Object o){
 		
@@ -21,10 +24,10 @@ public class JsonSerializerFactory {
 				res = stringSer.serialize(k, (String) o);
 				break;
 			case "java.lang.String[]":
-				if (stringSer == null) {
-					stringSer = new StringSerializer();
+				if (stringArrSer == null) {
+					stringArrSer = new ArraySerializer();
 				}
-				res = stringSer.serialize(k, (String) o);
+				res = stringArrSer.serialize(k, (String[]) o);
 				break;
 			case "int":
 				if (intSer == null) {
@@ -37,6 +40,18 @@ public class JsonSerializerFactory {
 					intSer = new NumericSerializer();
 				}
 				res = intSer.serialize(k, (Integer) o);
+				break;
+			case "java.lang.Integer[]":
+				if (intArrSer == null) {
+					intArrSer = new IntegerArraySerializer();
+				}
+				res = intArrSer.serialize(k, (int[]) o);
+				break;
+			case "int[]":
+				if (intArrSer == null) {
+					intArrSer = new IntegerArraySerializer();
+				}
+				res = intArrSer.serialize(k, (int[]) o);
 				break;
 			case "boolean":
 				if (boolSer == null) {
